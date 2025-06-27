@@ -1,0 +1,19 @@
+body
+{
+	background-color: black;
+	color: white;
+}
+
+input{
+background-color: black;
+border-color: aqua;
+border-radius: 15px;
+padding: 5px 5px 5px;
+color: aqua;
+}
+button{
+background-color: black;
+border-color: aqua;
+color: aqua;
+border-radius: 15px;
+}

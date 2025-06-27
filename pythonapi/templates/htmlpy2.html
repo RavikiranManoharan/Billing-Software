@@ -1,0 +1,107 @@
+<!DOCTYPE>
+
+<html>
+	
+	<head>
+		<title>python front end</title>
+	</head>
+	
+	<body>
+		
+		<center>
+			
+			<h5>View Data</h5>
+			
+			<br>
+			<br><br>
+			
+			<button onclick="fetching()">View data</button>
+			
+			<div id="data">
+			
+			
+			</div>
+		
+		</center>
+		
+	</body>
+	
+	<script>
+	
+		async function fetching()
+		{	
+			
+			var div = document.getElementById('data')
+			div.innerHTML = ''
+			
+			try
+			{
+				const response = await fetch('api/bill');
+				
+				if(!response.ok) throw new Error("cant fetch");
+				
+				const data = await response.json()
+			
+				var len = data.length
+			
+				var dta = []
+				
+				for(i=0;i<len;i++)
+				{
+				for(j=0;j<5;j++)
+				{
+					console.log(data[3][4])
+					dta.push(data[i][j])
+				}
+				
+				var elem = document.createElement('paragraph')
+				elem.id = `dta${i}`
+				
+				//console.log(dta)
+				
+				elem.textContent = `Sl.No: ${dta[0]}, Name: ${dta[1]}, Phone: ${dta[2]}, Price: ${dta[3]}, Products: ${dta[4]}`;
+				
+				dta = []
+				
+				div.appendChild(document.createElement('br'))	
+				div.appendChild(document.createElement('br'))	
+				div.appendChild(elem)
+				div.appendChild(document.createElement('br'))
+				div.appendChild(document.createElement('br'))	
+
+				}
+				
+			}
+			catch(error)
+			{
+				console.log("error",error);
+			}	
+		}
+	
+	</script>
+	
+	<style>
+	
+		
+			body
+			{
+				background-color: black;
+				color: aqua;
+			}
+
+			input{
+			background-color: black;
+			border-color: aqua;
+			border-radius: 15px;
+			padding: 5px 5px 5px;
+			color: aqua;
+			}
+			button{
+			background-color: black;
+			border-color: aqua;
+			color: aqua;
+			border-radius: 15px;
+			}
+	
+	</style>
+</html>
